@@ -1,0 +1,38 @@
+<% session_id = session[:session_id] %> <!-- セッション ID を取得 -->
+
+<% Rails.logger.debug "SESSION ID: #{session_id}" %> <!-- デバッグログ -->
+
+<div id="video-container" data-session-id="<%= session_id %>">
+  <% videos.each do |video| %>
+    <% is_favorite = Favorite.exists?(video: video, session_id: session_id) %>
+
+    <%# デバッグログをサーバーログに出力 %>
+    <% Rails.logger.debug "DEBUG: video_id=#{video.video_id}, is_favorite=#{is_favorite}" %>
+
+    <div class="video" 
+         data-video-id="<%= video.video_id %>" 
+         data-song-title="<%= video.song_title %>" 
+         data-artist="<%= video.artist %>" 
+         data-start-seconds="<%= video.start_seconds || 0 %>" 
+         data-end-seconds="<%= video.end_seconds %>"
+         data-favorite="<%= is_favorite ? 'true' : 'false' %>">
+      
+      <!-- 動画のサムネイル -->
+      <img src="<%= video.thumbnail_url %>" alt="<%= video.song_title %>" class="video-thumbnail">
+
+      <!-- 曲名とアーティスト名 -->
+      <div class="video-info">
+        <h3 class="song-title"><%= video.song_title %></h3>
+        <p class="artist"><%= video.artist %></p>
+      </div>
+
+      <!-- お気に入りボタン -->
+      <div class="favorite-button">
+        <button class="<%= is_favorite ? 'unfavorite-btn' : 'favorite-btn' %>" 
+                data-video-id="<%= video.id %>">
+          <%= is_favorite ? '❤️ お気に入り解除' : '♡ お気に入り' %>
+        </button>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,110 @@
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOMContentLoaded イベントが発火しました");
+
+  function setupFavoriteButtons() {
+    console.log("setupFavoriteButtons が実行されました");
+
+    const buttons = document.querySelectorAll(".favorite-button button");
+
+    if (buttons.length === 0) {
+      console.warn("⚠️ お気に入りボタンが見つかりません");
+    } else {
+      console.log(`✅ ${buttons.length} 個のボタンが見つかりました`);
+    }
+
+    buttons.forEach(button => {
+      let videoElement = button.closest(".video");
+
+      // videoElement が null でないかをチェック
+      if (!videoElement) {
+        console.error("⚠️ videoElement が見つかりません: ボタンの親要素が .video ではない可能性があります");
+        return; // videoElement が見つからない場合はこのボタンをスキップ
+      }
+
+      // デバッグ用メッセージ
+      console.log("🔍 videoElement:", videoElement);
+
+      let videoId = videoElement.getAttribute("data-video-id");
+      let isFavorite = videoElement.getAttribute("data-favorite");
+
+      console.log(`🔍 リロード時: videoId=${videoId}, data-favorite=${isFavorite}`);
+
+      if (!button.hasAttribute("data-listener")) {
+        console.log(`🟢 ボタン(${videoId}) にイベントを設定`);
+        button.addEventListener("click", favoriteButtonClickHandler);
+        button.setAttribute("data-listener", "true");
+      } else {
+        console.log(`🔴 ボタン(${videoId}) はすでにイベントが設定されています`);
+      }
+
+      initializeButtonState(button); // ⭐️ ボタンの状態をリロード時に反映
+    });
+  }
+
+  function initializeButtonState(button) {
+    let videoElement = button.closest(".video");
+    let isFavorite = videoElement.getAttribute("data-favorite") === "true";
+
+    console.log(`🎯 ボタン初期化: videoId=${videoElement.getAttribute("data-video-id")}, isFavorite=${isFavorite}`);
+
+    if (isFavorite) {
+      button.textContent = "❤️ お気に入り解除";
+      button.classList.remove("favorite-btn");
+      button.classList.add("unfavorite-btn");
+    } else {
+      button.textContent = "♡ お気に入り";
+      button.classList.remove("unfavorite-btn");
+      button.classList.add("favorite-btn");
+    }
+  }
+
+  function favoriteButtonClickHandler(event) {
+    console.log("🎯 お気に入りボタンがクリックされました");
+  
+    event.preventDefault();
+  
+    // 親要素 .video から videoId を取得
+    let videoElement = this.closest(".video");
+    let videoId = videoElement.getAttribute("data-video-id");
+  
+    // videoId の値を確認
+    console.log(`📌 親要素 .video から取得した videoId: ${videoId}`);
+  
+    let url = `/videos/${videoId}/favorites/toggle`;
+  
+    fetch(url, {
+      method: 'POST',
+      headers: { 'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content }
+    })
+    .then(response => {
+      // レスポンスが 200 OK の場合のみ処理を進める
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log("📨 APIからのレスポンス:", data);
+  
+      if (data.status === "added") {
+        console.log(`❤️ videoId: ${videoId} をお気に入りに追加`);
+        this.textContent = "❤️ お気に入り解除";
+        this.classList.remove("favorite-btn");
+        this.classList.add("unfavorite-btn");
+        videoElement.setAttribute("data-favorite", "true");
+      } else {
+        console.log(`💔 videoId: ${videoId} をお気に入り解除`);
+        this.textContent = "♡ お気に入り";
+        this.classList.remove("unfavorite-btn");
+        this.classList.add("favorite-btn");
+        videoElement.setAttribute("data-favorite", "false");
+      }
+    })
+    .catch(error => {
+      console.error("🚨 エラーが発生しました:", error);
+    });
+  }
+  
+
+  setupFavoriteButtons(); // 初回適用
+});

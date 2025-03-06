@@ -1,0 +1,34 @@
+<% session_id = session[:session_id] %> <!-- セッション ID を取得 -->
+
+<div id="video-container" data-session-id="<%= session_id %>">
+  <% videos.each do |video| %>
+    <% is_favorite = Favorite.exists?(video: video, session_id: session_id) %>
+
+    <div class="video" 
+         data-video-id="<%= video.video_id %>"  
+         data-song-title="<%= video.song_title %>" 
+         data-artist="<%= video.artist %>" 
+         data-start-seconds="<%= video.start_seconds || 0 %>" 
+         data-end-seconds="<%= video.end_seconds %>"
+         data-favorite="<%= is_favorite ? 'true' : 'false' %>">
+      
+      <!-- 動画のサムネイル -->
+      <img src="<%= video.thumbnail_url %>" alt="<%= video.song_title %>" class="video-thumbnail">
+
+      <!-- 曲名とアーティスト名 -->
+      <div class="video-info">
+        <h3 class="song-title"><%= video.song_title %></h3>
+        <p class="artist"><%= video.artist %></p>
+      </div>
+
+      <!-- お気に入りボタン -->
+      <div class="favorite-button">
+        <% if is_favorite %>
+          <button class="unfavorite-btn" data-video-id="<%= video.video_id %>">❤️ お気に入り解除</button>
+        <% else %>
+           <button class="favorite-btn" data-video-id="<%= video._video_id %>">♡ お気に入り</button> 
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

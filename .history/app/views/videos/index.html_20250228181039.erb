@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTuber Karaoke Videos</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>ななたま歌って（仮題）</h1>
+
+      <!-- 現在再生中の動画 -->
+      <div id="current-video">
+        <h1><%= @current_video.song_title %> - <%= @current_video.artist %></h1>
+        <iframe width="560" height="315" 
+          src="https://www.youtube.com/embed/<%= @current_video.video_id %>?start=<%= @current_video.start_seconds %>&end=<%= @current_video.end_seconds %>" 
+          frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- 検索フォーム -->
+      <div class="search-container">
+        <form action="<%= videos_path %>" method="get" id="search-form">
+          <input type="text" name="query" placeholder="曲名やアーティストを検索" value="<%= params[:query] %>">
+          <button type="submit">検索</button>
+        </form>
+
+        <!-- 全体表示 -->
+        <button id="show-all" class="filter-btn">すべて表示</button>
+        <!-- お気に入りフィルタ -->
+        <button id="show-favorites" class="filter-btn">お気に入りのみ表示</button>
+        <!-- 歌ってみたフィルタ -->
+        <button id="filter-start-0" class="filter-btn">歌ってみた</button>
+        <!-- カラオケフィルタ -->
+        <button id="filter-start-nonzero" class="filter-btn">カラオケ</button>
+      </div>
+
+      <!-- 動画のリスト -->
+      <div id="video-list">
+        <%= render partial: "video_list", locals: { videos: @videos } %>
+      </div>
+      <!-- 再生コントロール -->
+      <div id="player-controls" class="player-controls">
+        <button id="play-btn" class="control-btn">再生</button>
+        <button id="shuffle-btn" class="control-btn">ランダム再生</button>
+        <button id="repeat-btn" class="control-btn">リピート再生</button>
+      </div>
+    </div>
+
+    <!-- YouTube Player APIを読み込む -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <!-- アプリケーション用のJavaScript -->
+    <%= javascript_include_tag 'application', type: 'module' %>
+  </body>
+</html>

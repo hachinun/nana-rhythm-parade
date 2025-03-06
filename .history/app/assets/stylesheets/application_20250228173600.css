@@ -1,0 +1,89 @@
+/* お気に入りボタン */
+.favorite-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.favorite-button button {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 2px solid #ff4081;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* お気に入り未登録（♡） */
+.favorite-btn {
+  background-color: white;
+  color: #ff4081;
+}
+
+.favorite-btn:hover {
+  background-color: #ff4081;
+  color: white;
+}
+
+/* お気に入り登録済み（❤️） */
+.unfavorite-btn {
+  background-color: #ff4081;
+  color: white;
+}
+
+.unfavorite-btn:hover {
+  background-color: white;
+  color: #ff4081;
+}
+
+/* 動画リストのカード風デザイン */
+.video {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.video:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 検索フォームの位置調整 */
+.search-container {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-container form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-container input {
+  padding: 10px;
+  font-size: 1em;
+  width: 250px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-container button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-container button:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,197 @@
+/* 親コンテナを中央に配置 */
+.container {
+  display: flex; /* フレックスボックスを使用 */
+  flex-direction: column; /* 縦並び */
+  justify-content: flex-start; /* 上揃え */
+  align-items: center; /* 中央揃え */
+  height: 100vh; /* 画面の高さを100%に設定 */
+  padding: 20px; /* コンテナの内側に余白を追加（任意） */
+}
+
+/* 検索フォームを左揃え、動画リストは中央配置 */
+.search-container {
+  width: 100%; /* 幅を100%に設定 */
+  text-align: left; /* 左揃え */
+  margin-bottom: 20px; /* 下に余白を追加（任意） */
+  margin: auto;
+}
+
+.search-container form {
+  display: flex; /* フレックスボックスを使用して入力とボタンを横並びにする */
+}
+
+.search-container input {
+  padding: 10px;
+  margin-right: 10px; /* 入力とボタンの間にスペースを追加 */
+  font-size: 1em;
+  width: 200px; /* 入力フィールドの幅を指定 */
+}
+
+
+/* 動画項目全体にクリック可能のカーソル */
+.video {
+  display: flex; /* 横並びにするためにflexboxを使用 */
+  margin-bottom: 5px; /* 各動画項目の間にスペースを追加 */
+  cursor: pointer; /* クリック可能のカーソル */
+}
+
+/* 動画リストのスタイル */
+#video-list-container {
+  display: flex; /* 横並びにするためにflexboxを使用 */
+  flex-direction: row; /* 横並びにする */
+}
+
+#video-list {
+  max-height: 400px; /* 最大高さを指定（適宜調整） */
+  width: 600px;
+  overflow-y: scroll; /* 縦方向にスクロール可能に */
+  flex: 1; /* 幅を自動調整してスクロール領域が占めるように */
+  padding-right: 10px; /* スクロールバーの幅を考慮してパディングを追加 */
+  margin-right: 0; /* スクロールバーとの間に余白を追加しない */
+}
+
+#video-list::-webkit-scrollbar {
+  width: 8px; /* スクロールバーの幅 */
+}
+
+#video-list::-webkit-scrollbar-thumb {
+  background-color: #888; /* スクロールバーの色 */
+  border-radius: 5px; /* スクロールバーを丸く */
+}
+
+#video-list::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* スクロールバーの色をホバー時に変更 */
+}
+
+/* サムネイルの設定 */
+.video-thumbnail {
+  width: 100px;  /* 幅を100pxに設定 */
+  height: auto; /* 高さを100pxに設定 */
+  object-fit: contain; /* 縦横比を維持しながら親要素に収める */
+  margin-right: 15px; /* サムネイルとテキストの間にスペースを追加 */
+  cursor: pointer; /* クリックできるように設定 */
+}
+
+/* 曲名とアーティスト名部分 */
+.video-info {
+  display: flex;
+  flex-direction: column; /* 曲名とアーティスト名を縦に並べる */
+  justify-content: center; /* 中央揃え */
+}
+
+.song-title {
+  font-size: 1.2em; /* 曲名のフォントサイズ */
+  font-weight: bold; /* 曲名を太字に */
+  margin: 0; /* 曲名の上の余白を削除 */
+  cursor: pointer; /* 曲名もクリックできるように設定 */
+}
+
+.artist {
+  font-size: 1em; /* アーティスト名のフォントサイズ */
+  color: #666; /* アーティスト名の色を薄く */
+  margin: 0; /* アーティスト名の上の余白を削除 */
+  cursor: pointer; /* アーティストもクリックできるように設定 */
+}
+
+/* お気に入りボタンのスタイル */
+.favorite-button {
+  text-align: center;
+  margin-top: 10px;
+  margin-left: auto;
+}
+
+.favorite-button button {
+  font-size: 16px;
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* お気に入り未登録のボタン */
+.favorite-btn {
+  background-color: #ffd700; /* 黄色 */
+  color: #333; /* 濃いグレーで文字を読みやすく */
+  border: 2px solid #ffd700;
+}
+
+.favorite-btn:hover {
+  background-color: #ffcc00; /* ホバー時に少し濃い黄色 */
+  color: white;
+}
+
+/* お気に入り登録済みのボタン */
+.unfavorite-btn {
+  background-color: #ffcc00; /* 少し濃い黄色 */
+  color: white;
+  border: 2px solid #ffd700;
+}
+
+.unfavorite-btn:hover {
+  background-color: #ffd700; /* ホバー時に明るい黄色 */
+  color: #333; /* 濃いグレーで文字を読みやすく */
+}
+
+
+
+/* フィルターボタンの基本スタイル（OFF状態） */
+.filter-btn {
+  padding: 10px 15px;
+  font-size: 1em;
+  border: 2px solid #007bff;
+  background-color: white;
+  color: #007bff;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* ON 状態（選択中のボタン） */
+.filter-btn.active {
+  background-color: #0056b3; /* ON のときは濃い青 */
+  color: white;
+  border: 2px solid #003d80;
+}
+
+/* ホバー時（ON/OFF に関係なく適用） */
+.filter-btn:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* 再生コントロールのボタン */
+.player-controls {
+  display: flex;
+  justify-content: space-between; /* 左右にボタンを配置 */
+  align-items: center; /* ボタンを垂直方向に中央揃え */
+  width: 200px; /* ボタンの横幅を調整 */
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto; /* 中央揃え */
+}
+
+.control-btn {
+  background-color: #1db954; /* Spotifyの緑色 */
+  border: none;
+  color: white;
+  font-size: 30px; /* アイコンの大きさ */
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 60px; /* ボタンのサイズ */
+  height: 60px; /* ボタンのサイズ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.control-btn:hover {
+  background-color: #1aa34a; /* ホバー時の色 */
+}
+
+.control-btn:focus {
+  outline: none;
+}
+

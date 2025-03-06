@@ -1,0 +1,84 @@
+/* 動画項目全体にクリック可能のカーソル */
+.video {
+  display: flex; /* 横並びにするためにflexboxを使用 */
+  margin-bottom: 5px; /* 各動画項目の間にスペースを追加 */
+  cursor: pointer; /* クリック可能のカーソル */
+  position: relative; /* ボタンの位置を調整するために親要素にrelativeを設定 */
+}
+
+/* お気に入りボタンの設定 */
+.favorite-button button {
+  position: absolute; /* ボタンを動画の右上に配置 */
+  top: 10px; /* 上から10pxの位置 */
+  right: 10px; /* 右から10pxの位置 */
+  background-color: transparent; /* 背景色なし */
+  border: none; /* ボーダーなし */
+  cursor: pointer; /* クリック可能 */
+}
+
+/* ボタンが重ならないように調整 */
+.favorite-btn {
+  color: #ff6347; /* お気に入りボタンの色 */
+}
+
+.unfavorite-btn {
+  color: #00bfff; /* お気に入り解除ボタンの色 */
+}
+
+/* 動画リストのスタイル */
+#video-list-container {
+  display: flex; /* 横並びにするためにflexboxを使用 */
+  flex-direction: row; /* 横並びにする */
+}
+
+#video-list {
+  max-height: 400px; /* 最大高さを指定（適宜調整） */
+  width: 600px;
+  overflow-y: scroll; /* 縦方向にスクロール可能に */
+  flex: 1; /* 幅を自動調整してスクロール領域が占めるように */
+  padding-right: 10px; /* スクロールバーの幅を考慮してパディングを追加 */
+  margin-right: 0; /* スクロールバーとの間に余白を追加しない */
+}
+
+#video-list::-webkit-scrollbar {
+  width: 8px; /* スクロールバーの幅 */
+}
+
+#video-list::-webkit-scrollbar-thumb {
+  background-color: #888; /* スクロールバーの色 */
+  border-radius: 5px; /* スクロールバーを丸く */
+}
+
+#video-list::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* スクロールバーの色をホバー時に変更 */
+}
+
+/* サムネイルの設定 */
+.video-thumbnail {
+  width: 100px;  /* 幅を100pxに設定 */
+  height: auto; /* 高さを100pxに設定 */
+  object-fit: contain; /* 縦横比を維持しながら親要素に収める */
+  margin-right: 15px; /* サムネイルとテキストの間にスペースを追加 */
+  cursor: pointer; /* クリックできるように設定 */
+}
+
+/* 曲名とアーティスト名部分 */
+.video-info {
+  display: flex;
+  flex-direction: column; /* 曲名とアーティスト名を縦に並べる */
+  justify-content: center; /* 中央揃え */
+}
+
+.song-title {
+  font-size: 1.2em; /* 曲名のフォントサイズ */
+  font-weight: bold; /* 曲名を太字に */
+  margin: 0; /* 曲名の上の余白を削除 */
+  cursor: pointer; /* 曲名もクリックできるように設定 */
+}
+
+.artist {
+  font-size: 1em; /* アーティスト名のフォントサイズ */
+  color: #666; /* アーティスト名の色を薄く */
+  margin: 0; /* アーティスト名の上の余白を削除 */
+  cursor: pointer; /* アーティストもクリックできるように設定 */
+}

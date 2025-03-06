@@ -1,0 +1,1 @@
+app/models/user.rb（すでに存在する場合）

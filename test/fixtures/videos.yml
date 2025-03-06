@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  video_id: MyString
+  song_title: MyString
+  artist: MyString
+  start_seconds: 1
+  end_seconds: 1
+  video_title: MyString
+  post_date: 2025-01-31
+
+two:
+  video_id: MyString
+  song_title: MyString
+  artist: MyString
+  start_seconds: 1
+  end_seconds: 1
+  video_title: MyString
+  post_date: 2025-01-31

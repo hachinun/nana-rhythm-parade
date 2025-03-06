@@ -1,0 +1,226 @@
+/* 親コンテナを中央に配置 */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+/* 検索フォームを左揃え、動画リストは中央配置 */
+.search-container {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 20px;
+  margin: auto;
+}
+
+.search-container form {
+  display: flex;
+}
+
+.search-container input {
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 1em;
+  width: 200px;
+}
+
+/* 動画リストの表示設定 */
+#video-list-container {
+  display: flex;
+  flex-direction: row;
+}
+
+#video-list {
+  max-height: 400px;
+  width: 600px;
+  overflow-y: scroll;
+  flex: 1;
+  padding-right: 10px;
+  margin-right: 0;
+}
+
+/* スクロールバーのスタイル */
+#video-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+#video-list::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+#video-list::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* サムネイルの設定 */
+.video-thumbnail {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+/* 曲名とアーティスト名部分 */
+.video-info {
+  display: flex; /* 変更：縦並びから横並びに変更 */
+  flex-direction: row; /* 横並びに設定 */
+  justify-content: center;
+  align-items: center; /* 垂直方向で中央揃え */
+}
+
+.song-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0;
+  cursor: pointer;
+}
+
+.artist {
+  font-size: 1em;
+  color: #666;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* お気に入りボタンのスタイル */
+.favorite-button {
+  text-align: center;
+  margin-top: 10px;
+  margin-left: auto;
+}
+
+.favorite-button button {
+  font-size: 16px;
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* お気に入り未登録のボタン */
+.favorite-btn {
+  background-color: #ffd700;
+  color: #333;
+  border: 2px solid #ffd700;
+}
+
+.favorite-btn:hover {
+  background-color: #ffcc00;
+  color: white;
+}
+
+/* お気に入り登録済みのボタン */
+.unfavorite-btn {
+  background-color: #ffcc00;
+  color: white;
+  border: 2px solid #ffd700;
+}
+
+.unfavorite-btn:hover {
+  background-color: #ffd700;
+  color: #333;
+}
+
+/* フィルターボタンの基本スタイル */
+.filter-btn {
+  padding: 10px 15px;
+  font-size: 1em;
+  border: 2px solid #007bff;
+  background-color: white;
+  color: #007bff;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* ON状態 */
+.filter-btn.active {
+  background-color: #0056b3;
+  color: white;
+  border: 2px solid #003d80;
+}
+
+.filter-btn:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* 再生コントロールのボタン */
+.player-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 20px;
+  padding: 0 10px;
+}
+
+.control-btn {
+  background-color: #000000;
+  border: none;
+  color: white;
+  font-size: 30px;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.control-btn:hover {
+  background-color: #333333;
+}
+
+.control-btn:focus {
+  outline: none;
+}
+
+/* スマホ向けレスポンシブデザイン */
+@media (max-width: 767px) {
+  .container {
+    padding: 10px;
+  }
+
+  .search-container {
+    text-align: center;
+  }
+
+  .search-container input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #video-list {
+    width: 100%;
+    max-height: 300px;
+  }
+
+  .player-controls {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .control-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+
+  /* スマホ用にサムネイルとテキストのレイアウトを変更 */
+  .video-info {
+    flex-direction: column; /* スマホでは縦並びに変更 */
+  }
+}
