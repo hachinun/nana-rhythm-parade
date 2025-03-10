@@ -1,6 +1,5 @@
 require 'roo'
 require 'open-uri'
-require 'tempfile'
 
 class Video < ApplicationRecord
   has_many :favorites, dependent: :destroy
@@ -10,14 +9,16 @@ class Video < ApplicationRecord
     file_url = "https://drive.google.com/uc?id=1v6NP5mU-h6F6651r4eqtZSbrqmU3J5iB&export=download" # Google Driveのダウンロードリンク
     return unless file_url.present?
 
+    file = download_file(file_url)
+
     # 前回の動画データを削除
     Video.delete_all
 
-    # 一時的にファイルをダウンロード
-    file = download_file(file_url)
+    # Google DriveからExcelファイルをダウンロード
+    file_content = open(file_url)
 
     # Excelファイルを読み込む
-    spreadsheet = Roo::Excelx.new(file.path)
+    spreadsheet = Roo::Excelx.new(file_content)
     spreadsheet.default_sheet = spreadsheet.sheets.first # 最初のシートを選択
 
     # ヘッダーを確認（デバッグ用）
@@ -41,19 +42,7 @@ class Video < ApplicationRecord
     end
   end
 
-  private
-
-  # Google Driveからファイルをダウンロードして一時ファイルとして保存
-  def self.download_file(url)
-    tempfile = Tempfile.new(['video_data', '.xlsx'])
-    tempfile.binmode
-    tempfile.write(URI.open(url).read)
-    tempfile.rewind
-    tempfile
-  end
-
   # YouTube サムネイルURLを返すメソッド
-  public
   def thumbnail_url
     "https://img.youtube.com/vi/#{video_id}/0.jpg"
   end

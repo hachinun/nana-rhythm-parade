@@ -53,7 +53,6 @@ class Video < ApplicationRecord
   end
 
   # YouTube サムネイルURLを返すメソッド
-  public
   def thumbnail_url
     "https://img.youtube.com/vi/#{video_id}/0.jpg"
   end

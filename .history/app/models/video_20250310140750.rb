@@ -7,7 +7,7 @@ class Video < ApplicationRecord
   has_many :liked_users, through: :favorites, source: :user
 
   def self.import_from_file
-    file_url = "https://drive.google.com/uc?id=1v6NP5mU-h6F6651r4eqtZSbrqmU3J5iB&export=download" # Google Driveのダウンロードリンク
+    file_url = "https://drive.google.com/uc?id=YOUR_FILE_ID&export=download" # Google Driveのダウンロードリンク
     return unless file_url.present?
 
     # 前回の動画データを削除
@@ -53,7 +53,6 @@ class Video < ApplicationRecord
   end
 
   # YouTube サムネイルURLを返すメソッド
-  public
   def thumbnail_url
     "https://img.youtube.com/vi/#{video_id}/0.jpg"
   end

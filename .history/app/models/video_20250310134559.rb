@@ -1,6 +1,9 @@
 require 'roo'
 
 class Video < ApplicationRecord
+  has_many :favorites, dependent: :destroy
+  has_many :liked_users, through: :favorites, source: :user
+
   def self.import_from_file
     file_path = "C:/Users/myaor/Desktop/nanatama/data/videos.xlsx" # Excelファイルのパス
     return unless File.exist?(file_path) # ファイルが存在しない場合は処理をスキップ
@@ -32,4 +35,6 @@ class Video < ApplicationRecord
   def thumbnail_url
     "https://img.youtube.com/vi/#{video_id}/0.jpg"
   end
+
+
 end
