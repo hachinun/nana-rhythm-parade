@@ -29,7 +29,7 @@ class FavoritesController < ApplicationController
         render json: { status: "added" }
       rescue ActiveRecord::RecordInvalid => e
         Rails.logger.error "🚨 Failed to create favorite: #{e.message}"
-        render json: { error: "Failed to add favorite: #{e.message}" }, status: :unprocessable_entity
+        render json: { error: "Failed to add favorite" }, status: :unprocessable_entity
       end
     end
   end

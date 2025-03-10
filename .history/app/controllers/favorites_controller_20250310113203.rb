@@ -18,8 +18,7 @@ class FavoritesController < ApplicationController
       if favorite.destroy
         render json: { status: "removed" }
       else
-        # 削除に失敗した場合のエラーログとレスポンス
-        Rails.logger.error "🚨 Failed to remove favorite for video_id=#{@video.id} and session_id=#{session.id}. Errors: #{favorite.errors.full_messages.join(', ')}"
+        Rails.logger.error "🚨 Failed to remove favorite for video_id=#{@video.id} and session_id=#{session.id}"
         render json: { error: "Failed to remove favorite" }, status: :unprocessable_entity
       end
     else
@@ -29,7 +28,7 @@ class FavoritesController < ApplicationController
         render json: { status: "added" }
       rescue ActiveRecord::RecordInvalid => e
         Rails.logger.error "🚨 Failed to create favorite: #{e.message}"
-        render json: { error: "Failed to add favorite: #{e.message}" }, status: :unprocessable_entity
+        render json: { error: "Failed to add favorite" }, status: :unprocessable_entity
       end
     end
   end
