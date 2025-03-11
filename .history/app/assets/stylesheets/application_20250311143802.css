@@ -220,21 +220,10 @@ header h1 {
   margin: 0;
 }
 
-
-/* お気に入りボタン */
-.favorite-button button {
-  font-size: 16px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  background-color: #ffd700;
-}
-
 .favorite-button {
-  margin-left: auto; /* 右端に寄せる */
+  margin-left: auto; /* お気に入りボタンを右端に配置 */
+  margin-top: 0; /* 上の余白を調整 */
 }
-
-
 /* 再生コントロール */
 .player-controls {
   display: flex;
@@ -363,7 +352,7 @@ header h1 {
   }
 
   #video-list {
-    height: calc(100vh - 100px - 60px); /* ビューポートの高さからヘッダーとコントロールバーの高さを引いた分だけ表示 */
+    height: calc(100vh - 100px); /* ビューポートの高さからヘッダーやコントロールバーの高さを引いた分だけ表示 */
     overflow-y: auto; /* スクロール可能にする */
     background-color: #1a1a1a;
     padding-right: 0;
@@ -407,24 +396,24 @@ header h1 {
     margin-bottom: 10px;
   }
 
-  /* 再生ボタンを画面内に収めるための調整 */
-  .player-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 250px;
-    margin-top: 10px; /* 再生ボタンを少し上に調整 */
-    margin-left: auto;
-    margin-right: auto;
-    height: 50px;
-    gap: 15px;
-    padding: 0;
-    position: fixed;
-    bottom: 20px; /* 画面下に固定 */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10; /* 上に表示させる */
-  }
+/* 再生ボタンを画面内に収めるための調整 */
+.player-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  margin-top: 10px; /* 再生ボタンを少し上に調整 */
+  margin-left: auto;
+  margin-right: auto;
+  height: 50px;
+  gap: 15px;
+  padding: 0;
+  position: fixed;
+  bottom: 20px; /* 画面下に固定 */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10; /* 上に表示させる */
+}
 
   /* コントロールボタン */
   .control-btn {

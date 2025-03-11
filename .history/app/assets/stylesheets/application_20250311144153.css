@@ -220,6 +220,19 @@ header h1 {
   margin: 0;
 }
 
+/* 曲名とアーティスト名 */
+.song-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0;
+  cursor: pointer;
+}
+
+.artist {
+  font-size: 1em;
+  color: #bbb; /* アーティスト名の色を灰色に */
+  margin: 0;
+}
 
 /* お気に入りボタン */
 .favorite-button button {
