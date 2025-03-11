@@ -370,21 +370,6 @@ header h1 {
     padding-right: 0;
     margin-right: 0;
   }
-
-    /* スクロールバーのスタイル */
-    #video-list::-webkit-scrollbar {
-      width: 8px; /* スクロールバーの幅 */
-    }
-  
-    #video-list::-webkit-scrollbar-thumb {
-      background-color: #888; /* スクロールバーの色 */
-      border-radius: 5px; /* スクロールバーを丸く */
-    }
-  
-    #video-list::-webkit-scrollbar-thumb:hover {
-      background-color: #555; /* スクロールバーの色をホバー時に変更 */
-    }
-    
   .video-thumbnail {
     width: 80px; /* サムネイルの幅 */
     height: auto;
