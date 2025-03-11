@@ -161,21 +161,24 @@ header h1 {
   color: #ffffff; /* 動画タイトルの文字色を白に */
 }
 
-/* 動画リスト */
-#video-list-container {
-  display: flex;
-  flex-direction: row;
-}
+  /* 動画リストの幅をスマホの横幅に合わせる */
+  #video-list-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%; /* 横幅を100%に設定 */
+  }
 
-#video-list {
-  height: 100%; /* 画面の高さからヘッダーとコントロールバーの高さを引いて調整 */
-  width: 600px;
-  overflow-y: scroll;
-  flex: 1;
-  padding-right: 0px;
-  margin-right: 0;
-  background-color: #1a1a1a; /* 動画リストの背景色をダークに */
-}
+  #video-list {
+    width: 100%; /* 横幅を100%に設定 */
+    height: auto; /* 高さを自動調整 */
+    min-height: 250px; /* 最小高さを設定（小さい画面でも高さが確保される） */
+    overflow-y: auto; /* 縦方向にスクロール可能にする */
+    background-color: #1a1a1a;
+    padding-right: 0;
+    margin-right: 0;
+  }
+
 
 #video-list::-webkit-scrollbar {
   width: 8px; /* スクロールバーの幅 */
@@ -209,13 +212,13 @@ header h1 {
 }
 
 .song-title {
-  font-size: 1.1em;
+  font-size: 0.8em;
   font-weight: bold;
   margin: 0;
 }
 
 .artist {
-  font-size: 1em;
+  font-size: 0.7em;
   color: #bbb;
   margin: 0;
 }
@@ -364,14 +367,11 @@ header h1 {
 
   #video-list {
     width: 100%; /* 横幅を100%に設定 */
-    /* 動的に高さを設定 */
-    height: auto;
-    max-height: calc(100vh - 400px); /* ビューポートの高さからヘッダーとコントロールバーの高さを引いた分だけ表示 */
+    height: calc(100vh - 100px - 60px); /* ビューポートの高さからヘッダーとコントロールバーの高さを引いた分だけ表示 */
     overflow-y: auto; /* 縦方向にスクロール可能にする */
     background-color: #1a1a1a;
     padding-right: 0;
     margin-right: 0;
-    min-height: 100px; /* 最小高さを指定 */
   }
 
     /* スクロールバーのスタイル */
@@ -387,7 +387,7 @@ header h1 {
     #video-list::-webkit-scrollbar-thumb:hover {
       background-color: #555; /* スクロールバーの色をホバー時に変更 */
     }
-    
+
   .video-thumbnail {
     width: 80px; /* サムネイルの幅 */
     height: auto;
@@ -479,17 +479,6 @@ header h1 {
     background-color: #005bb5;
   }
 
-  .song-title {
-    font-size: 0.9em;
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  .artist {
-    font-size: 0.8em;
-    color: #bbb;
-    margin: 0;
-  }
 
   /* お気に入りボタン */
   .favorite-button {

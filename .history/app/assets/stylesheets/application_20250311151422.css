@@ -364,14 +364,12 @@ header h1 {
 
   #video-list {
     width: 100%; /* 横幅を100%に設定 */
-    /* 動的に高さを設定 */
-    height: auto;
-    max-height: calc(100vh - 400px); /* ビューポートの高さからヘッダーとコントロールバーの高さを引いた分だけ表示 */
+    height: auto; /* 高さを自動調整 */
+    min-height: 250px; /* 最小高さを設定（小さい画面でも高さが確保される） */
     overflow-y: auto; /* 縦方向にスクロール可能にする */
     background-color: #1a1a1a;
     padding-right: 0;
     margin-right: 0;
-    min-height: 100px; /* 最小高さを指定 */
   }
 
     /* スクロールバーのスタイル */
@@ -479,17 +477,6 @@ header h1 {
     background-color: #005bb5;
   }
 
-  .song-title {
-    font-size: 0.9em;
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  .artist {
-    font-size: 0.8em;
-    color: #bbb;
-    margin: 0;
-  }
 
   /* お気に入りボタン */
   .favorite-button {
