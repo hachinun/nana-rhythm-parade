@@ -333,7 +333,7 @@ header h1 {
   header {
     width: 100%; /* ヘッダーを画面幅に合わせる */
     left: 0; /* 左のマージンを解除 */
-    height: 30px; /* ヘッダーの高さを少し高く */
+    height: 34px; /* ヘッダーの高さを少し高く */
   }
 
   header h1 {
@@ -364,7 +364,7 @@ header h1 {
     width: 100%; /* 横幅を100%に設定 */
     /* 動的に高さを設定 */
     height: auto;
-    max-height: calc(100vh - 140px - 56.25vw);
+    max-height: calc(100vh - 200px - var(--current-video-height, 0px));
     overflow-y: auto; /* 縦方向にスクロール可能にする */
     background-color: #1a1a1a;
     padding-right: 0;
