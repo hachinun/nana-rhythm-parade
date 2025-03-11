@@ -1,0 +1,14 @@
+document.getElementById('toggle-both').addEventListener('click', function() {
+    const searchContainer = document.getElementById('search-container');
+    const filterContainer = document.getElementById('filter-container');
+    
+    if (searchContainer.style.display === 'none' && filterContainer.style.display === 'none') {
+      searchContainer.style.display = 'block';
+      filterContainer.style.display = 'block';
+      this.textContent = '△'; // トグルボタンのテキストを変更
+    } else {
+      searchContainer.style.display = 'none';
+      filterContainer.style.display = 'none';
+      this.textContent = '▽'; // トグルボタンのテキストを変更
+    }
+  });

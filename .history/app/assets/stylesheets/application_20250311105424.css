@@ -1,0 +1,256 @@
+body {
+  background-color: #000000; /* 背景色を黒に変更 */
+  color: #ffffff; /* 文字色を白に設定 */
+}
+
+header {
+  background-color: #00bcd4; /* 水色 */
+  color: white; /* 文字色を白に */
+  padding: 10px 0; /* 上下の余白を小さく */
+  text-align: center; /* 中央揃え */
+  width: 640px; /* 動画と同じ横幅に設定 */
+  margin: 0 auto; /* 中央に配置 */
+  box-sizing: border-box; /* パディングを横幅に含める */
+}
+
+header h1 {
+  font-size: 1.5em; /* フォントサイズを小さく */
+  margin: 0; /* マージンを削除 */
+}
+
+/* 親コンテナを中央に配置 */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 中央揃え */
+  align-items: center;
+  height: 93vh;
+  padding: 20px;
+  color: #ffffff; /* 親コンテナ内の文字色も白に */
+}
+
+/* 検索フォーム */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 左揃え */
+  align-items: flex-start; /* 子要素を左端に揃える */
+  margin-bottom: 20px;
+  width: auto;
+}
+
+.search-container form {
+  display: flex;
+  width: auto;
+}
+
+.search-container input {
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 1em;
+  width: 200px;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #888;
+}
+
+.search-container button {
+  padding: 10px 15px;
+  font-size: 1em;
+  border: 2px solid #007bff;
+  background-color: white;
+  color: #007bff;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.search-container button:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* フィルターボタンを検索バーの下に配置し、左端を揃える */
+.filter-btn-container {
+  display: flex;
+  justify-content: flex-start; /* 左揃え */
+  width: auto;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.filter-btn {
+  padding: 10px 15px;
+  font-size: 1em;
+  border: 2px solid #007bff;
+  background-color: white;
+  color: #007bff;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.filter-btn.active {
+  background-color: #0056b3;
+  color: white;
+  border: 2px solid #003d80;
+}
+
+.filter-btn:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+
+
+/* 動画項目全体にクリック可能のカーソル */
+.video {
+  display: flex;
+  margin-bottom: 5px;
+  cursor: pointer;
+  color: #ffffff; /* 動画タイトルの文字色を白に */
+}
+
+/* 動画リスト */
+#video-list-container {
+  display: flex;
+  flex-direction: row;
+}
+
+#video-list {
+  max-height: 400px;
+  width: 600px;
+  overflow-y: scroll;
+  flex: 1;
+  padding-right: 10px;
+  margin-right: 0;
+  background-color: #1a1a1a; /* 動画リストの背景色をダークに */
+}
+
+#video-list::-webkit-scrollbar {
+  width: 8px; /* スクロールバーの幅 */
+}
+
+#video-list::-webkit-scrollbar-thumb {
+  background-color: #888; /* スクロールバーの色 */
+  border-radius: 5px; /* スクロールバーを丸く */
+}
+
+#video-list::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* スクロールバーの色をホバー時に変更 */
+}
+
+/* サムネイル */
+.video-thumbnail {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+/* 曲名とアーティスト名 */
+.song-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0;
+  cursor: pointer;
+}
+
+.artist {
+  font-size: 1em;
+  color: #bbb; /* アーティスト名の色を灰色に */
+  margin: 0;
+}
+
+/* お気に入りボタン */
+.favorite-button button {
+  font-size: 16px;
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #ffd700;
+  color: #333;
+}
+
+/* 再生コントロール */
+.player-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 20px;
+  padding: 0 10px;
+}
+
+.control-btn {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* ボタンのスタイル */
+.toggle-btn-container {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.toggle-btn {
+  background-color: #25282c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.toggle-btn:hover {
+  background-color: #25282c;
+  transform: scale(1.05);
+}
+
+/* スマホ向けのスタイル */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .search-container input {
+    width: 150px;
+  }
+
+  #video-list {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .video-thumbnail {
+    width: 80px;
+  }
+
+  .video-info {
+    font-size: 0.9em;
+  }
+
+  .song-title {
+    font-size: 1em;
+  }
+
+  .artist {
+    font-size: 0.9em;
+  }
+
+  .control-btn {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+  }
+}

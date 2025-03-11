@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTuber Karaoke Videos</title>
+    <link rel="stylesheet" href="styles.css"> <!-- スタイルシートを追加する場合 -->
+  </head>
+  <body>
+    <div class="container">
+      <!-- ヘッダー部分 -->
+      <header>
+        <h1>ななたま歌って（仮題）</h1>
+      </header>
+
+      <!-- 現在再生中の動画 -->
+      <div id="current-video">
+        <h1><%= @current_video.song_title %> - <%= @current_video.artist %></h1>
+        <iframe width="640" height="360" 
+          src="https://www.youtube.com/embed/<%= @current_video.video_id %>?start=<%= @current_video.start_seconds %>&end=<%= @current_video.end_seconds %>" 
+          frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- フィルタと検索フォームを両方表示するボタン -->
+      <div class="toggle-btn-container">
+        <button id="toggle-both" class="toggle-btn">フィルタと検索フォームを表示</button>
+      </div>
+
+      <!-- 検索フォーム -->
+      <div id="search-container" class="search-container" style="display:none;">
+        <form action="<%= videos_path %>" method="get" id="search-form">
+          <input type="text" name="query" placeholder="曲名やアーティストを検索" value="<%= params[:query] %>">
+          <button type="submit">検索</button>
+        </form>
+      </div>
+
+      <!-- フィルタボタン -->
+      <div id="filter-container" class="filter-container" style="display:none;">
+        <div class="filter-buttons">
+          <button id="show-all" class="filter-btn">すべて表示</button>
+          <button id="show-favorites" class="filter-btn">お気に入りのみ表示</button>
+          <button id="filter-start-0" class="filter-btn">歌ってみた</button>
+          <button id="filter-start-nonzero" class="filter-btn">カラオケ</button>
+        </div>
+      </div>
+
+      <!-- 動画のリスト -->
+      <div id="video-list" data-videos="<%= @videos.to_json %>">
+        <%= render partial: "video_list", locals: { videos: @videos } %>
+      </div>
+
+      <!-- 再生コントロール -->
+      <div id="player-controls" class="player-controls">
+        <button id="shuffle-btn" class="control-btn">🔀</button>
+        <button id="play-btn" class="control-btn">
+          <i class="fa-solid fa-play"></i>
+        </button>
+        <button id="next-btn" class="control-btn">⏭️</button>
+        <button id="repeat-btn" class="control-btn">🔁</button>
+      </div>
+
+    </div>
+
+    <!-- YouTube Player APIを読み込む -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <!-- アプリケーション用のJavaScript -->
+    <%= javascript_include_tag 'application', type: 'module' %>
+
+    <script>
+      // フィルタと検索フォームを同時に表示/非表示
+      document.getElementById('toggle-both').addEventListener('click', function() {
+        const searchContainer = document.getElementById('search-container');
+        const filterContainer = document.getElementById('filter-container');
+        
+        if (searchContainer.style.display === 'none' && filterContainer.style.display === 'none') {
+          searchContainer.style.display = 'block';
+          filterContainer.style.display = 'block';
+          this.textContent = 'フィルタと検索フォームを非表示';
+        } else {
+          searchContainer.style.display = 'none';
+          filterContainer.style.display = 'none';
+          this.textContent = 'フィルタと検索フォームを表示';
+        }
+      });
+    </script>
+
+  </body>
+</html>
