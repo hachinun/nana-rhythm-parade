@@ -356,22 +356,38 @@ header h1 {
   #video-list-container {
     display: flex;
     flex-direction: column;
-    height: 100vh; /* 親要素の高さを画面全体に合わせる */
-    max-height: -webkit-fill-available; /* Safari用に高さ調整 */
+    flex: 1;
     width: 100%; /* 横幅を100%に設定 */
   }
 
-  #video-list {
-    width: 100%; /* 横幅を100%に設定 */
-    flex-grow: 1; /* 動画リストが利用可能なスペースを占める */
-    /* 動的に高さを設定 */
-    max-height: calc(100vh - 140px - 56.25vw);
-    overflow-y: auto; /* 縦方向にスクロール可能にする */
-    background-color: #1a1a1a;
-    padding-right: 0;
-    margin-right: 0;
-    min-height: 100px; /* 最小高さを指定 */
-  }
+/* コンテナの高さを調整 */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: -webkit-fill-available; /* Safari用の高さ調整 */
+  padding: 0;
+  color: #ffffff;
+}
+
+/* 動画リストの高さ調整 */
+#video-list {
+  width: 100%;
+  height: -webkit-fill-available; /* Safari用の高さ調整 */
+  overflow-y: scroll;
+  flex: 1;
+  background-color: #1a1a1a;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+/* その他の要素の高さ調整 */
+#current-video iframe {
+  width: 100%;
+  height: -webkit-fill-available; /* Safari用の高さ調整 */
+}
+
 
     /* スクロールバーのスタイル */
     #video-list::-webkit-scrollbar {
@@ -425,7 +441,6 @@ header h1 {
   }
 
 /* 再生ボタンを画面内に収めるための調整 */
-/* 再生ボタンを画面内に収めるための調整 */
 .player-controls {
   display: flex;
   justify-content: center;
@@ -434,14 +449,9 @@ header h1 {
   margin-top: 10px; /* 再生ボタンを少し上に調整 */
   margin-left: auto;
   margin-right: auto;
-  height: 50px;
   gap: 15px;
   padding: 0;
-  position: fixed;
-  bottom: 20px; /* 画面下に固定 */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10; /* 上に表示させる */
+  position: relative; /* 固定位置ではなく、通常の流れに沿った位置に配置 */
 }
 
 /* コントロールボタン */
