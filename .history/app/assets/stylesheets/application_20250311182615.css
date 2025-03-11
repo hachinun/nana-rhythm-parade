@@ -163,14 +163,12 @@ header h1 {
   flex-direction: row;
 }
 
+/* 動画リストの下に余白を確保 */
 #video-list {
-  height: 100%; /* 画面の高さからヘッダーとコントロールバーの高さを引いて調整 */
-  width: 600px;
-  overflow-y: scroll;
-  flex: 1;
-  padding-right: 0px;
-  margin-right: 0;
-  background-color: #1a1a1a; /* 動画リストの背景色をダークに */
+  margin-bottom: 70px; /* コントロールボタンと重ならないように調整 */
+  height: auto; /* 動的な高さを維持 */
+  max-height: calc(100vh - 140px - 56.25vw - 70px); /* 画面サイズに合わせて高さ調整 */
+  overflow-y: auto; /* 縦方向にスクロール可能にする */
 }
 
 #video-list::-webkit-scrollbar {
@@ -317,7 +315,7 @@ header h1 {
 }
 
 /* スマートフォン用の表示 */
-@media (max-width: 758px) {
+@media (max-width: 480px) {
   html, body {
     height: auto;
     margin: 0;

@@ -317,7 +317,7 @@ header h1 {
 }
 
 /* スマートフォン用の表示 */
-@media (max-width: 758px) {
+@media (max-width: 480px) {
   html, body {
     height: auto;
     margin: 0;
