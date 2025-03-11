@@ -366,7 +366,7 @@ header h1 {
     width: 100%; /* 横幅を100%に設定 */
     /* 動的に高さを設定 */
     height: auto;
-    max-height: calc(100vh - 150px - var(--current-video-height, 0px));
+    max-height: calc(100vh - 110px); /* ビューポートの高さからヘッダーとコントロールバーの高さを引いた分だけ表示 */
     overflow-y: auto; /* 縦方向にスクロール可能にする */
     background-color: #1a1a1a;
     padding-right: 0;
