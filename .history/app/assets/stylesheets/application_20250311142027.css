@@ -334,30 +334,27 @@ header h1 {
     font-size: 1.2em; /* フォントサイズ調整 */
   }
 
-  /* current video: 横画面サイズに合わせ、縦幅は調整 */
-  #current-video {
-    width: 100vw; /* 横幅を100%に設定 */
-    height: auto; /* 高さは自動調整 */
-  }
-
   #current-video iframe {
-    width: 100%; /* 動画の横幅を100%に */
-    height: 56.25vw; /* 高さは16:9比率を保って調整（幅の56.25%） */
-    max-height: 100vh; /* 高さが画面を超えないように制限 */
+    width: 100%; /* 動画の幅を100%に */
+    height: auto; /* 高さ自動調整 */
   }
 
-  /* 動画リストの縦幅調整 */
+  /* 動画リスト */
+  #video-list {
+    width: 100%; /* リストの幅を100%に */
+    height: auto;
+    padding-right: 0;
+    margin-right: 0;
+  }
+
   #video-list-container {
     flex-direction: column; /* 動画リストを縦並びに */
   }
 
-  #video-list {
-    width: 100%; /* 幅100%に調整 */
-    height: calc(100vh - 120px); /* ヘッダーとコントロールバーを考慮した高さを設定 */
-    overflow-y: auto; /* 必要に応じてスクロール */
-    padding-right: 0;
-    margin-right: 0;
-    background-color: #1a1a1a; /* 動画リストの背景色をダークに */
+  .video {
+    flex-direction: column; /* 動画アイテムを縦に並べる */
+    margin-bottom: 10px;
+    padding: 10px;
   }
 
   /* サムネイル */
@@ -365,13 +362,6 @@ header h1 {
     width: 80px; /* サムネイルを小さく */
     height: auto;
     margin-right: 10px;
-  }
-
-  /* 動画リスト内の項目 */
-  .video {
-    flex-direction: column; /* 動画アイテムを縦に並べる */
-    margin-bottom: 10px;
-    padding: 10px;
   }
 
   /* 検索フォームとフィルタ */
