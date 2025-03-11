@@ -356,7 +356,7 @@ header h1 {
   #video-list-container {
     display: flex;
     flex-direction: column;
-    height: calc(-webkit-fill-available - 80px); /* コントロールボタン分（60px）を引いた高さ */
+    height: calc(-webkit-fill-available - 60px); /* コントロールボタン分（60px）を引いた高さ */
     width: 100%; /* 横幅を100%に設定 */
   }
 
