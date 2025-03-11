@@ -40,6 +40,8 @@ header {
   height: 34px; /* ヘッダーの高さ設定 */
 }
 
+
+
 header {
   background-color: #00bcd4; /* 水色 */
   color: white; /* 文字色を白に */
@@ -226,7 +228,7 @@ header h1 {
   border: none;
   cursor: pointer;
   color: #ffd700;
-  background-color: #1a1a1a;
+  background-color: #f80b0b;
   padding: 10px 10px;
 }
 

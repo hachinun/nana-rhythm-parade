@@ -40,6 +40,8 @@ header {
   height: 34px; /* ヘッダーの高さ設定 */
 }
 
+
+
 header {
   background-color: #00bcd4; /* 水色 */
   color: white; /* 文字色を白に */
@@ -221,13 +223,12 @@ header h1 {
 
 /* お気に入りボタン */
 .favorite-button button {
-  font-size: 25px;
+  font-size: 16px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
   color: #ffd700;
   background-color: #1a1a1a;
-  padding: 10px 10px;
 }
 
 .favorite-button {

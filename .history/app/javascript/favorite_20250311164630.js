@@ -1,46 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOMContentLoaded イベントが発火しました");
-
-  function setupFavoriteButtons() {
-    console.log("setupFavoriteButtons が実行されました");
-    const buttons = document.querySelectorAll(".favorite-button button");
-
-    if (buttons.length === 0) {
-      console.warn("⚠️ お気に入りボタンが見つかりません");
-    } else {
-      console.log(`✅ ${buttons.length} 個のボタンが見つかりました`);
-    }
-
-    buttons.forEach(button => {
-      let videoElement = button.closest(".video");
-
-      // videoElement が null でないかをチェック
-      if (!videoElement) {
-        console.error("⚠️ videoElement が見つかりません: ボタンの親要素が .video ではない可能性があります");
-        return; // videoElement が見つからない場合はこのボタンをスキップ
-      }
-
-      // デバッグ用メッセージ
-      console.log("🔍 videoElement:", videoElement);
-
-      let videoId = videoElement.getAttribute("data-video-id");
-      let isFavorite = videoElement.getAttribute("data-favorite");
-
-      console.log(`🔍 リロード時: videoId=${videoId}, data-favorite=${isFavorite}`);
-
-      if (!button.hasAttribute("data-listener")) {
-        console.log(`🟢 ボタン(${videoId}) にイベントを設定`);
-        button.addEventListener("click", favoriteButtonClickHandler);
-        button.setAttribute("data-listener", "true");
-      } else {
-        console.log(`🔴 ボタン(${videoId}) はすでにイベントが設定されています`);
-      }
-
-      initializeButtonState(button); // ⭐️ ボタンの状態をリロード時に反映
-    });
-  }
-
-  function initializeButtonState(button) {
+function initializeButtonState(button) {
     let videoElement = button.closest(".video");
     if (!videoElement) {
         console.error("⚠️ ボタンの親要素 .video が見つかりません");
@@ -110,6 +68,3 @@ function favoriteButtonClickHandler(event) {
         console.error("🚨 エラーが発生しました:", error);
     });
 }
-
-  setupFavoriteButtons(); // 初回適用
-});
