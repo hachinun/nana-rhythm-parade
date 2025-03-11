@@ -421,24 +421,24 @@ header h1 {
     margin-bottom: 10px;
   }
 
-/* 再生ボタンを画面内に収めるための調整 */
-.player-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 250px;
-  margin-top: 10px; /* 再生ボタンを少し上に調整 */
-  margin-left: auto;
-  margin-right: auto;
-  height: 50px;
-  gap: 15px;
-  padding: 0;
-  position: fixed;
-  bottom: 20px; /* 画面下に固定 */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10; /* 上に表示させる */
-}
+  /* 再生ボタンを画面内に収めるための調整 */
+  .player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin-top: 10px; /* 再生ボタンを少し上に調整 */
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    gap: 15px;
+    padding: 0;
+    position: fixed;
+    bottom: 20px; /* 画面下に固定 */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; /* 上に表示させる */
+  }
 
 /* コントロールボタン */
 .control-btn {

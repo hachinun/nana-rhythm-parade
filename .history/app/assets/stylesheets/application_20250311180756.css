@@ -163,12 +163,14 @@ header h1 {
   flex-direction: row;
 }
 
-/* 動画リストの下に余白を確保 */
 #video-list {
-  margin-bottom: 70px; /* コントロールボタンと重ならないように調整 */
-  height: auto; /* 動的な高さを維持 */
-  max-height: calc(100vh - 140px - 56.25vw - 70px); /* 画面サイズに合わせて高さ調整 */
-  overflow-y: auto; /* 縦方向にスクロール可能にする */
+  height: 100%; /* 画面の高さからヘッダーとコントロールバーの高さを引いて調整 */
+  width: 600px;
+  overflow-y: scroll;
+  flex: 1;
+  padding-right: 0px;
+  margin-right: 0;
+  background-color: #1a1a1a; /* 動画リストの背景色をダークに */
 }
 
 #video-list::-webkit-scrollbar {
@@ -421,37 +423,37 @@ header h1 {
     margin-bottom: 10px;
   }
 
-/* 再生ボタンを画面内に収めるための調整 */
-.player-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 250px;
-  margin-top: 10px; /* 再生ボタンを少し上に調整 */
-  margin-left: auto;
-  margin-right: auto;
-  height: 50px;
-  gap: 15px;
-  padding: 0;
-  position: fixed;
-  bottom: 20px; /* 画面下に固定 */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10; /* 上に表示させる */
-}
+  /* 再生ボタンを画面内に収めるための調整 */
+  .player-controls {
+    display: sticky;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin-top: 10px; /* 再生ボタンを少し上に調整 */
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    gap: 15px;
+    padding: 0;
+    position: fixed;
+    bottom: 20px; /* 画面下に固定 */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; /* 上に表示させる */
+  }
 
-/* コントロールボタン */
-.control-btn {
-  background-color: #2d2f36;
-  border: none;
-  padding: 12px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: background-color 0.3s, transform 0.2s;
-  color: #fff;
-  width: 50px;
-  height: 50px;
-}
+  /* コントロールボタン */
+  .control-btn {
+    background-color: #2d2f36;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s, transform 0.2s;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+  }
 
   /* プレイボタンのスタイル */
   #play-btn {
