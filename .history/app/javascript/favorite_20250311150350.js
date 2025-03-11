@@ -94,13 +94,13 @@ function favoriteButtonClickHandler(event) {
 
       if (data.status === "added") {
           console.log(`❤️ videoId: ${videoId} をお気に入りに追加`);
-          this.textContent = "❤️ ";
+          this.textContent = "❤️ お気に入り解除";
           this.classList.remove("favorite-btn");
           this.classList.add("unfavorite-btn");
           videoElement.setAttribute("data-favorite", "true");
       } else {
           console.log(`💔 videoId: ${videoId} をお気に入り解除`);
-          this.textContent = "♡ ";
+          this.textContent = "♡ お気に入り";
           this.classList.remove("unfavorite-btn");
           this.classList.add("favorite-btn");
           videoElement.setAttribute("data-favorite", "false");
