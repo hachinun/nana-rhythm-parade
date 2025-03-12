@@ -308,13 +308,15 @@ header h1 {
 /* スマートフォン用の表示 */
 @media (max-width: 758px) {
   html, body {
-    height: -webkit-fill-available;
+    height: auto;
     margin: 0;
     padding: 0;
     font-size: 14px; /* フォントサイズを小さく */
   }
 
-
+  body{
+    height: -webkit-fill-available;
+    }
 
   .container {
     height: auto;
@@ -346,7 +348,7 @@ header h1 {
   #video-list-container {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 80px); /* コントロールボタン分（60px）を引いた高さ */
+    height: calc(-webkit-fill-available - 80px); /* コントロールボタン分（60px）を引いた高さ */
     width: 100%; /* 横幅を100%に設定 */
   }
 
