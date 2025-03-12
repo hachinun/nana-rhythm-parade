@@ -422,15 +422,6 @@ header h1 {
   font-size: 14px
 }
 
-.filter-container button {
-  flex: 1; /* 均等配置 */
-  max-width: 150px; /* ボタンが大きくなりすぎないよう調整 */
-  min-width: 80px; /* 小さくなりすぎないように */
-  padding: 8px;
-  text-align: center;
-  font-size: 14px;
-}
-
 
 /* 再生ボタンを画面内に収めるための調整 */
 .player-controls {

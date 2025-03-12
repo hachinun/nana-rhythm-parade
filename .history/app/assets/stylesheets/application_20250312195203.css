@@ -408,7 +408,7 @@ header h1 {
   }
 
   .search-container button {
-    width: 80px;
+    width: 30px;
     padding: 5px 10px;
     font-size: 14px;
   }
@@ -420,15 +420,6 @@ header h1 {
   width: auto;
   align-items: center;
   font-size: 14px
-}
-
-.filter-container button {
-  flex: 1; /* 均等配置 */
-  max-width: 150px; /* ボタンが大きくなりすぎないよう調整 */
-  min-width: 80px; /* 小さくなりすぎないように */
-  padding: 8px;
-  text-align: center;
-  font-size: 14px;
 }
 
 
