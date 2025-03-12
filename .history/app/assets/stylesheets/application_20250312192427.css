@@ -290,7 +290,7 @@ header h1 {
   background-color: #25282c;
   color: white;
   border: none;
-  width: 640px;
+  width: 400px;
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
@@ -504,5 +504,4 @@ header h1 {
 .toggle-btn:hover {
   background-color: #25282c;
   transform: scale(1.05);
-}
 }

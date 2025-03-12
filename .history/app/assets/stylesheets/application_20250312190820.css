@@ -137,6 +137,7 @@ header h1 {
   border: 2px solid #003d80;
 }
 
+
 /* 動画項目全体にクリック可能のカーソル */
 .video {
   display: flex;
@@ -204,6 +205,7 @@ header h1 {
   margin: 0;
 }
 
+
 /* お気に入りボタン */
 .favorite-button button {
   font-size: 25px;
@@ -218,6 +220,7 @@ header h1 {
 .favorite-button {
   margin: auto; /* 右端に寄せる */
 }
+
 
 /* 再生コントロール */
 .player-controls {
@@ -290,7 +293,7 @@ header h1 {
   background-color: #25282c;
   color: white;
   border: none;
-  width: 640px;
+  width: auto;
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
@@ -490,11 +493,18 @@ header h1 {
     margin-top: 10px;
   }
 
+  /* ボタンのスタイル */
+  .toggle-btn {
+    width: 100%; /* ボタン幅を100%に */
+    height: 25px;
+  }
+}
+
 .toggle-btn {
-  background-color: #25282c;
+  background-color: #006eff;
   color: white;
   border: none;
-  width: 100vw;
+  width: 100%;
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
@@ -504,5 +514,4 @@ header h1 {
 .toggle-btn:hover {
   background-color: #25282c;
   transform: scale(1.05);
-}
 }

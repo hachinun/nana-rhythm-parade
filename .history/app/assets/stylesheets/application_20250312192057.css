@@ -290,7 +290,7 @@ header h1 {
   background-color: #25282c;
   color: white;
   border: none;
-  width: 640px;
+  width: 100%;
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
@@ -490,11 +490,18 @@ header h1 {
     margin-top: 10px;
   }
 
+  /* ボタンのスタイル */
+  .toggle-btn {
+    width: 100%; /* ボタン幅を100%に */
+    height: 25px;
+  }
+}
+
 .toggle-btn {
   background-color: #25282c;
   color: white;
   border: none;
-  width: 100vw;
+  width: 100%;
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
@@ -504,5 +511,4 @@ header h1 {
 .toggle-btn:hover {
   background-color: #25282c;
   transform: scale(1.05);
-}
 }
