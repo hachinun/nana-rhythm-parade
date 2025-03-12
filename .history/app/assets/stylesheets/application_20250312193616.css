@@ -140,7 +140,7 @@ header h1 {
 /* 動画項目全体にクリック可能のカーソル */
 .video {
   display: flex;
-  margin-bottom: 0px;
+  margin-bottom: 5px;
   cursor: pointer;
   color: #ffffff; /* 動画タイトルの文字色を白に */
 }
@@ -388,7 +388,7 @@ header h1 {
   .video {
     display: flex; /* 横並びにする */
     align-items: center; /* アイテムを縦にセンタリング */
-    margin-bottom: 0px;
+    margin-bottom: 5px;
     color: #ffffff;
   }
   /* 検索フォームとフィルタ */

@@ -140,7 +140,7 @@ header h1 {
 /* 動画項目全体にクリック可能のカーソル */
 .video {
   display: flex;
-  margin-bottom: 0px;
+  margin-bottom: 5px;
   cursor: pointer;
   color: #ffffff; /* 動画タイトルの文字色を白に */
 }
