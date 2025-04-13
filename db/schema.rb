@@ -43,7 +43,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_11_110947) do
     t.integer "video_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "session_id"
+    t.string "session_id", null: false
+    t.index ["video_id", "session_id"], name: "index_favorites_on_video_id_and_session_id", unique: true
     t.index ["video_id"], name: "index_favorites_on_video_id"
   end
 

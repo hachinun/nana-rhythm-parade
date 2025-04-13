@@ -18,4 +18,5 @@ class VideosController < ApplicationController
     # 動画一覧の最初の動画を表示（検索後も再生中の動画は保持する）
     @current_video = @videos.first || Video.first
   end
+
 end
