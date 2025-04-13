@@ -18,22 +18,14 @@ FROM base as build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y \
-    build-essential \
-    git \
-    libvips \
-    pkg-config \
-    libmariadb-dev              
-
-# Copy Gemfile and lockfile before bundle install (✨重要ポイント)
-COPY Gemfile Gemfile.lock ./
+    apt-get install --no-install-recommends -y build-essential git libvips pkg-config
 
 # Install the correct version of Bundler
 RUN gem install bundler:2.5.23
 
-# Run `bundle config set frozen false` to allow Gemfile.lock to be updated
-RUN bundle config set frozen false && \
-    bundle install && \
+# Install application gems
+COPY Gemfile Gemfile.lock ./ 
+RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
@@ -56,13 +48,8 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y \
-    curl \
-    libsqlite3-0 \
-    libvips \
-    libmariadb-dev && \
+    apt-get install --no-install-recommends -y curl libsqlite3-0 libvips && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
-
 
 # Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle

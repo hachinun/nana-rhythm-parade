@@ -23,7 +23,8 @@ RUN apt-get update -qq && \
     git \
     libvips \
     pkg-config \
-    libmariadb-dev              
+    default-libmysqlclient-dev  # ← 追加
+
 
 # Copy Gemfile and lockfile before bundle install (✨重要ポイント)
 COPY Gemfile Gemfile.lock ./
@@ -60,7 +61,7 @@ RUN apt-get update -qq && \
     curl \
     libsqlite3-0 \
     libvips \
-    libmariadb-dev && \
+    libmysqlclient-dev && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 
