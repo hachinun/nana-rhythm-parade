@@ -2,14 +2,6 @@ require 'roo'
 require 'open-uri'
 require 'tempfile'
 
-namespace :videos do
-  desc "Import videos from Excel file on Google Drive"
-  task import: :environment do
-    Video.import_from_file
-    puts "動画データのインポートが完了しました。"
-  end
-end
-
 class Video < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :liked_users, through: :favorites, source: :user
@@ -60,10 +52,8 @@ class Video < ApplicationRecord
     tempfile
   end
 
-  public
-
   # YouTube サムネイルURLを返すメソッド
+  public
   def thumbnail_url
     "https://img.youtube.com/vi/#{video_id}/0.jpg"
   end
-end
