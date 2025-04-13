@@ -71,5 +71,6 @@ gem 'roo'
 gem "whenever", "~> 1.0"
 
 group :production do
-  gem 'pg'
+  gem 'mysql2'  # ← これを追加！
+  # gem 'pg'     # ← こっちは不要なのでコメントアウト or 削除！
 end
