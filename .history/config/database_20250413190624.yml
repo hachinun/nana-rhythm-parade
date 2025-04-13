@@ -1,0 +1,10 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  port: 4000
+  username: root
+  password:
+  host: 127.0.0.1
+  variables:
+    tidb_enable_noop_functions: ON
